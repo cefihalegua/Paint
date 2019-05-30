@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./paint.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="paint">
+        <div id="left-menu">
+            <div id="color-buttons"></div>
+            <div class="brush-size">
+                <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Brush Size
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="heightandwidth(5)">Small</a>
+                        <a class="dropdown-item" href="#" onclick="heightandwidth(10)">Medium</a>
+                        <a class="dropdown-item" href="#" onclick="heightandwidth(20)">Large</a>
+                    </div>
+                </div>
+            </div>
+            <div class="brush-shape">
+                <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Brush Shape
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="brushRadiusNumber(0)">Square</a>
+                        <a class="dropdown-item" href="#" onclick="brushRadiusNumber(50)">Round</a>
+                    </div>
+                </div>
+            </div>
+            <div class="eraser">
+                <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="./images/eraser.png" id="eraser" alt="eraser">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" onclick="heightandwidth(5), changeColor('white')">Small
+                            Eraser</a>
+                        <a class="dropdown-item" href="#" onclick="heightandwidth(10), changeColor('white')">Medium
+                            Eraser</a>
+                        <a class="dropdown-item" href="#" onclick="heightandwidth(20), changeColor('white')">Large
+                            Eraser</a>
+                    </div>
+                </div>
+            </div>
+            <div id="color-picker-constant" class="color-picker-class">
+                <input type="color" id="color-picker" value="#ffffff">
+                <label for="color-picker">Color picker</label>
+            </div>
+            <div>
+                <button id="rotate-canvas">Rotate</button>
+                <button id="clear-canvas">Clear</button>
+            </div>
+            <div>
+                <button id="save-button">Save</button>
+                <button id="load-button">Load</button>
+            </div>
+        </div>
+        <div id="canvas"></div>
+    </div>
+    <script src="./paint.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
