@@ -56,22 +56,27 @@ function brushRadiusNumber(number) {
 var rotateCanvas = document.getElementById("rotate-canvas");
 rotateCanvas.addEventListener("click", rotateTheCanvas);
 var rotationConstant = 0;
+var checkRotationConstant = 0;
 function rotateTheCanvas() {
     if (rotationConstant == 0) {
         canvas.style.transform = "rotate(90deg)";
         rotationConstant = 1;
+        checkRotationConstant = 1;
     }
     else if (rotationConstant == 1) {
         canvas.style.transform = "rotate(180deg)";
         rotationConstant = 2;
+        checkRotationConstant = 1;
     }
     else if (rotationConstant == 2) {
         canvas.style.transform = "rotate(270deg)";
         rotationConstant = 3;
+        checkRotationConstant = 1;
     }
     else if (rotationConstant == 3) {
         canvas.style.transform = "rotate(360deg)";
         rotationConstant = 0;
+        checkRotationConstant = 1;
     }
 }
 
@@ -106,19 +111,27 @@ function loadingImage() {
 
 function clickLocation(click) {
     if (mouseCheck == 1) {
-        var paintPixel = document.createElement("div");
-        paintPixel.style.position = ("absolute");
-        paintPixel.style.height = (divHeight + "px");
-        paintPixel.style.width = (divWidth + "px");
-        paintPixel.style.borderRadius = (radiusNumber + "%")
-        if (colorPickerConstant == 1) {
-            paintPixel.style.backgroundColor = (document.getElementById("color-picker").value);
+        if (checkRotationConstant == 0 || rotationConstant == 0) {
+            var paintPixel = document.createElement("div");
+            paintPixel.style.position = ("absolute");
+            paintPixel.style.height = (divHeight + "px");
+            paintPixel.style.width = (divWidth + "px");
+            paintPixel.style.borderRadius = (radiusNumber + "%")
+            if (colorPickerConstant == 1) {
+                paintPixel.style.backgroundColor = (document.getElementById("color-picker").value);
+            }
+            else if (colorPickerConstant == 0) {
+                paintPixel.style.backgroundColor = color;
+            }
+            paintPixel.style.left = (click.clientX - canvas.offsetLeft + "px");
+            paintPixel.style.top = (click.clientY - canvas.offsetTop + "px");
+            canvas.appendChild(paintPixel);
         }
-        else if (colorPickerConstant == 0) {
-            paintPixel.style.backgroundColor = color;
+        else {
+            alert("The rotation will be reseted to continue drawing");
+            mouseCheck = 0;
+            rotationConstant = 3;
+            rotateTheCanvas();
         }
-        paintPixel.style.left = (click.clientX - canvas.offsetLeft + "px");
-        paintPixel.style.top = (click.clientY - canvas.offsetTop + "px");
-        canvas.appendChild(paintPixel);
     }
 }
